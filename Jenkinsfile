@@ -15,12 +15,12 @@ pipeline {
         failure {
             mail to: 'stefanw70@hotmail.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+             body: "Something is wrong with pipeline"
         }
         success {
             mail to: 'stefanw70@hotmail.com',
              subject: "Succeded Pipeline: ${currentBuild.fullDisplayName}",
-             body: "${env.BUILD_URL} completed successfully"
+             body: "Pipeline completed successfully"
         }
     }
 }
