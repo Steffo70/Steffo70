@@ -11,4 +11,16 @@ pipeline {
             }
         }
     }
+    post {
+        failure {
+            mail to: 'stefanw70@hotmail.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
+        }
+        success {
+            mail to: 'stefanw70@hotmail.com',
+             subject: "Succeded Pipeline: ${currentBuild.fullDisplayName}",
+             body: "${env.BUILD_URL} completed successfully"
+        }
+    }
 }
